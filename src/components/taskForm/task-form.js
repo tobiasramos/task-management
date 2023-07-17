@@ -1,3 +1,4 @@
+import "./task-form.css";
 import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 
@@ -21,20 +22,27 @@ const TaskForm = ({ onAddTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <TextField
+        className="textField"
         label="Título"
         value={title}
         onChange={handleTitleChange}
         required
       />
       <TextField
+        className="textField"
         label="Descrição"
         value={description}
         onChange={handleDescriptionChange}
         required
       />
-      <Button type="submit" variant="contained" color="primary">
+      <Button
+        className="btn-add"
+        type="submit"
+        variant="contained"
+        color="primary"
+      >
         Adicionar Tarefa
       </Button>
     </form>

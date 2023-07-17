@@ -1,0 +1,18 @@
+.form {
+    width: 20rem;
+    margin-top: 10px;
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #3a352f;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.textField {
+    margin-top: 10px;
+}
+
+.btn-add {
+    margin-top: 20px;
+}

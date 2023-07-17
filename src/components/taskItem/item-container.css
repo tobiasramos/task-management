@@ -1,0 +1,6 @@
+.item-container {
+    border: 1px solid red;
+    width: 80%;
+    margin: 10px auto;
+    border-radius: 10px;
+}
