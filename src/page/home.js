@@ -10,10 +10,15 @@ const Home = () => {
     setTasks([...tasks, task]);
   };
 
+  const deleteTask = (taskToDelete) => {
+    const updatedTasks = tasks.filter((task) => task !== taskToDelete);
+    setTasks(updatedTasks);
+  };
+
   return (
     <div className="home-container">
       <CreateTask onAddTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onDeleteTask={deleteTask}/>
     </div>
   );
 };

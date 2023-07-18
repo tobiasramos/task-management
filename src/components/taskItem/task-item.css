@@ -4,3 +4,10 @@
     margin: 10px auto;
     border-radius: 10px;
 }
+
+.popover-content {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
