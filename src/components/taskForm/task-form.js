@@ -24,21 +24,19 @@ const TaskForm = ({ onAddTask }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <TextField
-        className="textField"
         label="Título"
         value={title}
         onChange={handleTitleChange}
         required
       />
       <TextField
-        className="textField"
         label="Descrição"
         value={description}
         onChange={handleDescriptionChange}
         required
       />
       <Button
-        className="btn-add"
+        className="btnAdd"
         type="submit"
         variant="contained"
         color="primary"
