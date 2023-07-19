@@ -80,17 +80,19 @@ const TaskItem = ({ task, onDelete, onUpdate }) => {
       ) : (
         <>
           <h3>{updatedTask.title}</h3>
-          <p>{updatedTask.description}</p>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleOpenPopover}
-          >
-            Deletar
-          </Button>
-          <Button variant="contained" color="primary" onClick={handleEdit}>
-            Editar
-          </Button>
+          <p className="description">{updatedTask.description}</p>
+          <div className="btns">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleOpenPopover}
+            >
+              Deletar
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleEdit}>
+              Editar
+            </Button>
+          </div>
           <Popover
             open={popoverOpen}
             onClose={handleClosePopover}

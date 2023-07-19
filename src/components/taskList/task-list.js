@@ -1,6 +1,5 @@
 import { List } from "@material-ui/core";
 import TaskItem from "../taskItem/task-item";
-import './task-list.css';
 
 const TaskList = ({ tasks, onDeleteTask, onUpdateTask }) => {
   const handleUpdateTask = (taskId, updatedTitle, updatedDescription) => {
