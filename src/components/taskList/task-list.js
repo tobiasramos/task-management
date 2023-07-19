@@ -1,13 +1,24 @@
-import React from "react";
 import { List } from "@material-ui/core";
 import TaskItem from "../taskItem/task-item";
-import './task-list.css'
+import './task-list.css';
 
-const TaskList = ({ tasks, onDeleteTask }) => {
+const TaskList = ({ tasks, onDeleteTask, onUpdateTask }) => {
+  const handleUpdateTask = (taskId, updatedTitle, updatedDescription) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, title: updatedTitle, description: updatedDescription } : task
+    );
+    onUpdateTask(updatedTasks);
+  };
+
   return (
     <List className="list-container">
       {tasks.map((task) => (
-        <TaskItem key={task.id} task={task} onDelete={onDeleteTask} />
+        <TaskItem
+          key={task.id}
+          task={task}
+          onDelete={onDeleteTask}
+          onUpdate={handleUpdateTask}
+        />
       ))}
     </List>
   );
