@@ -1,7 +1,8 @@
 .item-container {
-    border: 1px solid red;
-    width: 80%;
-    margin: 10px auto;
+    width: 20%;
+    padding: 5px;
+    margin: 5px 5px;
+    box-shadow: 5px 5px 5px hsl(231, 11%, 63%);
     border-radius: 10px;
 }
 

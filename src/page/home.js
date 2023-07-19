@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <CreateTask onAddTask={addTask} />
-      <TaskList tasks={tasks} onDeleteTask={deleteTask}/>
+      <TaskList tasks={tasks} onDeleteTask={deleteTask} />
     </div>
   );
 };
