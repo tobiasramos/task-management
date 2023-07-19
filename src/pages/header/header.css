@@ -1,0 +1,25 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid hsl(229, 24%, 77%);
+}
+
+img {
+    width: 70px;
+    border-radius: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid hsl(229, 24%, 77%);
+}
+
+.exit {
+    cursor: pointer;
+}

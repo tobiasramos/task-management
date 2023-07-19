@@ -1,7 +1,7 @@
 import "./home.css";
 import { useState } from "react";
-import CreateTask from "../components/createTask/create-task";
-import TaskList from "../components/taskList/task-list";
+import CreateTask from "../../components/createTask/create-task";
+import TaskList from "../../components/taskList/task-list";
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
