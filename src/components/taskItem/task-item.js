@@ -1,134 +1,74 @@
 import { useState } from "react";
 import "./task-item.css";
-import { Button, Popover, Typography, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
+import DeleteTask from "../deleteTask/delete-task";
 
-const TaskItem = ({ task, onDelete, onUpdate }) => {
-  const [popoverOpen, setPopoverOpen] = useState(false);
+const TaskItem = ({ task, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [updatedTask, setUpdatedTask] = useState({
-    title: task.title,
-    description: task.description,
-  });
+  const [editedTask, setEditedTask] = useState({ title: task.title, description: task.description });
+  const [error, setError] = useState(null);
 
-  const handleOpenPopover = () => {
-    setPopoverOpen(true);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEditedTask({ ...editedTask, [name]: value });
   };
 
-  const handleClosePopover = () => {
-    setPopoverOpen(false);
-  };
-
-  const handleDelete = () => {
-    onDelete(task);
-    handleClosePopover();
-  };
-
-  const handleEdit = () => {
-    setIsEditing(true);
-    handleClosePopover();
-  };
-
-  const handleSave = () => {
-    if (
-      updatedTask.title.trim() === "" ||
-      updatedTask.description.trim() === ""
-    ) {
-      alert("Por favor, preencha todos os campos antes de salvar.");
+  const handleSaveChanges = () => {
+    if (editedTask.title.trim() === "" || editedTask.description.trim() === "") {
+      setError("Por favor, preencha todos os campos.");
       return;
     }
-
-    onUpdate(task.id, updatedTask.title, updatedTask.description);
+    task.title = editedTask.title;
+    task.description = editedTask.description;
     setIsEditing(false);
-  };
-
-  const handleCancel = () => {
-    setIsEditing(false);
-    setUpdatedTask({
-      title: task.title,
-      description: task.description,
-    });
-  };
-
-  const handleChange = (e) => {
-    setUpdatedTask((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
+    setError(null);
   };
 
   return (
     <div className="item-container">
-      {isEditing ? (
-        <>
-          <TextField
-            name="title"
-            value={updatedTask.title}
-            onChange={handleChange}
-          />
-          <TextField
-            name="description"
-            value={updatedTask.description}
-            onChange={handleChange}
-          />
-          <Button variant="contained" color="primary" onClick={handleSave}>
-            Salvar
+    {!isEditing ? (
+      <>
+        <h3>{task.title}</h3>
+        <p className="description">{task.description}</p>
+        <div className="btns">
+          <DeleteTask task={task} onDelete={onDelete} />
+          <Button onClick={() => setIsEditing(true)} variant="contained" color="primary">
+            Edit
           </Button>
-          <Button variant="contained" color="default" onClick={handleCancel}>
-            Cancelar
-          </Button>
-        </>
-      ) : (
-        <>
-          <h3>{updatedTask.title}</h3>
-          <p className="description">{updatedTask.description}</p>
-          <div className="btns">
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleOpenPopover}
-            >
-              Deletar
-            </Button>
-            <Button variant="contained" color="primary" onClick={handleEdit}>
-              Editar
-            </Button>
-          </div>
-          <Popover
-            open={popoverOpen}
-            onClose={handleClosePopover}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
-            }}
-          >
-            <div className="popover-content">
-              <Typography>
-                Tem certeza que deseja excluir esta tarefa?
-              </Typography>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={handleDelete}
-              >
-                Confirmar
-              </Button>
-              <Button
-                variant="contained"
-                color="default"
-                onClick={handleClosePopover}
-              >
-                Não
-              </Button>
-            </div>
-          </Popover>
-        </>
-      )}
+        </div>
+      </>
+    ) : (
+      <div className="edit-form">
+      <TextField
+        label="Título"
+        name="title"
+        value={editedTask.title}
+        onChange={handleInputChange}
+        fullWidth
+        error={error && editedTask.title.trim() === ""}
+      />
+      <TextField
+        label="Descrição"
+        name="description"
+        value={editedTask.description}
+        onChange={handleInputChange}
+        fullWidth
+        multiline
+        error={error && editedTask.description.trim() === ""}
+      />
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="btns">
+        <Button onClick={handleSaveChanges} variant="contained" color="primary">
+          Save
+        </Button>
+        <Button onClick={() => setIsEditing(false)} variant="outlined" color="secondary">
+          Cancel
+        </Button>
+      </div>
     </div>
-  );
+    )}
+  </div>
+);
 };
 
 export default TaskItem;

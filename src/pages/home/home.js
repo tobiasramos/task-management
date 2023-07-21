@@ -15,22 +15,12 @@ const Home = () => {
     setTasks(updatedTasks);
   };
 
-  const updateTask = (taskId, updatedTitle, updatedDescription) => {
-    const updatedTasks = tasks.map((task) =>
-      task.id === taskId
-        ? { ...task, title: updatedTitle, description: updatedDescription }
-        : task
-    );
-    setTasks(updatedTasks);
-  };
-
   return (
     <div className="home-container">
       <CreateTask onAddTask={addTask} />
       <TaskList
         tasks={tasks}
         onDeleteTask={deleteTask}
-        onUpdateTask={updateTask}
       />
     </div>
   );
