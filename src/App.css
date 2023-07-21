@@ -1,7 +1,8 @@
+body {
+    background-color: #e8e8e8;
+}
 .App {
-    height: auto;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    background-color: #e8e8e8;
 }
