@@ -16,3 +16,22 @@
     gap: 0.5em;
 }
 
+.instructionContainer {
+    margin-top: 20px;
+    border: 2px solid #888888;
+    width: 25rem;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .instruction {
+    color: #000; 
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .instruction.success {
+    color: #5dd55d;
+  }
