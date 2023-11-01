@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    padding: 10px;
+    background-color: #e8e8e8;
+    gap: 0.5em;
+}
+
+.instructionContainer {
+    margin-top: 20px;
+    border: 2px solid #888888;
+    width: 25rem;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .instruction {
+    color: #000; 
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .instruction.success {
+    color: #5dd55d;
+  }

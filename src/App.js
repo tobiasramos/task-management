@@ -1,12 +1,12 @@
 import "./App.css";
-import Header from "./pages/header/header";
-import Home from "./pages/home/home";
+import Register from "./pages/register/register";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001/";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Home />
+      <Register/>
     </div>
   );
 }
