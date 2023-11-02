@@ -13,5 +13,17 @@
   width: 40%;
   padding: 10px;
   background-color: #e8e8e8;
-  gap: 0.5em;
+  gap: 0.8em;
+}
+
+.errorContainer {
+  margin-top: -10px;
+  margin-bottom: 8px;
+  height: 5px;
+}
+
+.error {
+  color: #fc1a1a;
+  font-size: 14px;
+  margin-top: 5px;
 }
