@@ -3,16 +3,19 @@ import styles from "./Register.module.css";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
-    repeatPassword: "",
+    repeat_password: "",
   });
 
-  const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
 
   const handleChange = (e) => {
@@ -26,12 +29,13 @@ const Register = () => {
     if (
       regexEmail.test(user.email) &&
       regexPassword.test(user.password) &&
-      user.password === user.repeatPassword
+      user.password === user.repeat_password
     ) {
       axios
         .post("/register", user)
         .then((response) => window.alert(response.data.message))
         .catch((response) => window.alert(response.data.message));
+      navigate("/login");
     }
   };
 
@@ -63,8 +67,8 @@ const Register = () => {
           variant="outlined"
           label="Repita a senha"
           type="password"
-          name="repeatPassword"
-          value={user.repeatPassword}
+          name="repeat_password"
+          value={user.repeat_password}
           onChange={handleChange}
         />
         <Button type="submit" variant="contained">
@@ -91,7 +95,7 @@ const Register = () => {
 
           <div
             className={`${styles.instruction} ${
-              user.password && user.password === user.repeatPassword
+              user.password && user.password === user.repeat_password
                 ? styles.success
                 : ""
             }`}
