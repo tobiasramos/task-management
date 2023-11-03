@@ -4,12 +4,14 @@ import Register from "./pages/register/register";
 import Home from "./pages/home/home";
 import axios from "axios";
 import Login from "./pages/login/login";
+import LandingPage from "./pages/LandingPage/LandingPage";
 axios.defaults.baseURL = "http://localhost:3001/";
 
 function App() {
   return (
     <div className="App">
       <Routes>
+        <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/home" element={<Home />} />

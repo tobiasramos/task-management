@@ -1,5 +1,6 @@
 import "./home.css";
 import { useEffect, useState } from "react";
+import Header from "../header/header"
 import CreateTask from "../../components/createTask/create-task";
 import TaskList from "../../components/taskList/task-list";
 import axios from "axios";
@@ -43,6 +44,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      <Header />
       <CreateTask onAddTask={addTask} />
       <TaskList tasks={tasks} onDeleteTask={deleteTask} />
     </div>
